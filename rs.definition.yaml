@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    app: myqpp
+    type: front-end
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      type: front-end
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+        type: front-end
+    spec:
+      containers:
+        - image: nginx
+          name: nginx-container
